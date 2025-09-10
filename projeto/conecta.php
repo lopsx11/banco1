@@ -1,0 +1,20 @@
+<?php
+$hostname = "localhost";
+$username = "root";
+$password =  "";
+$database = "desenvolvimento";
+//habilita os relatórios de erro da classe mysqli
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+try {
+   $conn = new mysqli($hostname, $username, $password, $database);
+   //define o charset para UTF-8
+   $conn -> set_charset("utf8mb4");
+   echo "Conectado ao BD!";
+} catch (mysqli_sql_exeception $e) {
+    error_log("Erro na conexão com o BD:". $e->getmessage());
+    //mensagem genérica para o usúario
+    die("Ocorreu um erro interno no servidor do BD.");
+}
+
+
+?>
